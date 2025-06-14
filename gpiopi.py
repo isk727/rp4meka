@@ -6,7 +6,6 @@ import socket
 import json
 import uuid
 import RPi.GPIO as GPIO
-#import config
 import configparser
 config = configparser.ConfigParser()
 config.read('/etc/mekapit/config')
