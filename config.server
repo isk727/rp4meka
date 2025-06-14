@@ -1,0 +1,9 @@
+[General]
+PID_FILE=/var/run/
+RID=206
+[UDP]
+IP_ADDRESS=192.168.1.111
+PORT=8888
+[DB]
+DBNAME=/usr/share/ucds/db/udpd.sqlite
+SQL=INSERT INTO dgram (id, rid, json) VALUES (:id, :rid, :json)
