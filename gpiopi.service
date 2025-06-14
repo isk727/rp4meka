@@ -1,0 +1,13 @@
+[Unit]
+Description=GPIOPI
+After=network.target
+
+[Service]
+ExecStart=/usr/share/gpiopi/gpiopi.py
+Restart=always
+Type=forking
+PIDFile=/var/run/gpiopi.pid
+
+[Install]
+WantedBy=multi-user.target[Unit]
+Description=UDP Client Daemon for Raspberry Pi
