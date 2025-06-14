@@ -1,0 +1,11 @@
+[Unit]
+Description=UDP Clinet Daemon for Server
+
+[Service]
+ExecStart=/usr/share/ucds/udpcds.py
+Restart=always
+Type=forking
+PIDFile=/var/run/ucds.pid
+
+[Install]
+WantedBy=multi-user.target
