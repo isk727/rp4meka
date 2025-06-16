@@ -1,5 +1,5 @@
 [General]
-PID_FILE=/var/run/
+PID_FILE=/run/
 RID=206
 [UDP]
 IP_ADDRESS=192.168.1.111
