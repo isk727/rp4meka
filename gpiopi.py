@@ -102,21 +102,21 @@ def event_callback_status_ct(gpio_pin):
 def sendUDP(cmd, val):
     data = {'uuid': str(uuid.uuid4()), 'rid': config['General']['RID'], 'command': str(cmd), 'value': val}
     json_data = json.dumps(data)
-    s = socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.sendto(json_data.encode(), (config['UDP']['IP_ADDRESS'], int(config['UDP']['PORT'])))
     s.close()
 
 def daemonize():
-#    pid = os.fork() #ここでプロセスをforkする
-#    if pid > 0: #親プロセスの場合(pidは子プロセスのプロセスID)
-#        pf = config['General']['PID_FILE'] + os.path.splitext(os.path.basename(__file__))[0] + '.pid'
-#        pid_file = open(pf, 'w')
-#        pid_file.write(str(pid)+"\n")
-#        pid_file.close()
-#        sys.exit()
-#    if pid == 0: #子プロセスの場合
-#        main_unit()
-    main_unit()
+    pid = os.fork()
+    if pid > 0:
+        pf = config['General']['PID_FILE'] + os.path.splitext(os.path.basename(__file__))[0] + '.pid'
+        pid_file = open(pf, 'w')
+        pid_file.write(str(pid)+"\n")
+        pid_file.close()
+        sys.exit()
+    if pid == 0:
+        main_unit()
+#    main_unit()
 
 if __name__ == '__main__':
     while True:
