@@ -1,11 +1,13 @@
 [Unit]
 Description=UDP Client Daemon for Raspberry Pi
+After=network.target
 
 [Service]
+WorkingDirectory=/usr/share/ucdr
 ExecStart=/usr/share/ucdr/ucdr.py
 Restart=always
 Type=forking
-PIDFile=/var/run/ucdr.pid
+PIDFile=/run/ucdr.pid
 
 [Install]
 WantedBy=multi-user.target
